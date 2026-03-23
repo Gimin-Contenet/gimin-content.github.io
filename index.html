@@ -13,23 +13,39 @@
       color: #222;
     }
 
-    header {
-      padding: 80px 20px;
-      text-align: center;
-      background: white;
-      border-bottom: 1px solid #eee;
-    }
+    .profile {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
 
-    header h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
+.intro {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+}
 
-    header p {
-      font-size: 18px;
-      color: #555;
-    }
+.sub {
+  font-size: 14px;
+  color: #777;
+}
+    <header>
+  <img src="profile.jpg" alt="프로필 사진" class="profile" />
 
+  <h1>Reference Library</h1>
+
+  <p class="intro">
+    송지민 · 커뮤니케이션 한다, 고로 존재한다<br/>
+    미디어와 콘텐츠를 통해 사람을 설득하는 일을 합니다.
+  </p>
+
+  <p class="sub">
+    콘텐츠 영감을 얻기 위한 레퍼런스 저장소입니다.
+  </p>
+</header>
+    
     main {
       max-width: 900px;
       margin: 40px auto;
