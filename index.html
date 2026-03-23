@@ -6,129 +6,342 @@
   <title>Reference Library</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      color: #222;
+      background: #f5f5f3;
+      color: #1f1f1f;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 72px 20px 56px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
     }
 
     .profile {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
-}
-
-.intro {
-  font-size: 16px;
-  color: #333;
-  margin-top: 10px;
-}
-
-.sub {
-  font-size: 14px;
-  color: #777;
-}
-    <header>
-  <img src="profile.jpg" alt="프로필 사진" class="profile" />
-
-  <h1>Reference Library</h1>
-
-  <p class="intro">
-    송지민 · 커뮤니케이션 한다, 고로 존재한다<br/>
-    미디어와 콘텐츠를 통해 사람들을 설득하는 일을 합니다.
-  </p>
-
-  <p class="sub">
-    콘텐츠 영감을 얻기 위한 레퍼런스 저장소입니다.
-  </p>
-</header>
-    
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
+      width: 124px;
+      height: 124px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 4px solid #f2f2f2;
     }
 
-    h2 {
-      margin-top: 60px;
+    .header-text {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      color: #666;
+      background: #f3f3f3;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: 42px;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .intro {
+      margin: 0;
+      font-size: 17px;
+      color: #333;
+    }
+
+    .sub {
+      margin-top: 14px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .section {
+      margin-top: 56px;
+    }
+
+    .section:first-child {
+      margin-top: 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
       margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .section-header h2 {
+      margin: 0;
       font-size: 28px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
     }
 
     .card {
-      background: white;
-      padding: 20px;
-      margin-bottom: 16px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid #ececec;
     }
 
-    .card a {
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+    }
+
+    .thumb {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #ddd;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .label {
+      display: inline-block;
+      font-size: 12px;
       font-weight: bold;
-      text-decoration: none;
-      color: #000;
+      color: #666;
+      background: #f3f3f3;
+      border-radius: 999px;
+      padding: 6px 10px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      display: inline-block;
+      font-size: 21px;
+      font-weight: bold;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .card-title:hover {
+      opacity: 0.7;
     }
 
     .card p {
-      margin: 6px 0;
+      margin: 8px 0;
       font-size: 15px;
       color: #555;
     }
 
     .reason {
-      margin-top: 8px;
+      color: #7a7a7a;
+    }
+
+    .footer-note {
+      margin-top: 70px;
+      padding-top: 24px;
+      border-top: 1px solid #e5e5e5;
       font-size: 14px;
-      color: #888;
+      color: #8a8a8a;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 56px 20px 44px;
+      }
+
+      header h1 {
+        font-size: 34px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .thumb {
+        height: 200px;
+      }
     }
   </style>
 </head>
 
 <body>
-
   <header>
-    <h1>Reference Library</h1>
-    <p>콘텐츠 영감을 얻기 위한 레퍼런스 저장소입니다.</p>
+    <div class="header-inner">
+      <img src="profile.jpg" alt="송지민 프로필 사진" class="profile" />
+
+      <div class="header-text">
+        <div class="eyebrow">Content Reference Archive</div>
+        <h1>Reference Library</h1>
+
+        <p class="intro">
+          송지민<br />
+          커뮤니케이션 한다, 고로 존재한다.<br />
+          미디어와 콘텐츠를 통해 사람을 설득하는 일을 합니다.
+        </p>
+
+        <p class="sub">
+          콘텐츠 영감을 얻기 위해 저장한 레퍼런스와, 왜 저장했는지에 대한 짧은 메모를 기록하는 공간입니다.
+        </p>
+      </div>
+    </div>
   </header>
 
   <main>
+    <section class="section">
+      <div class="section-header">
+        <h2>🎬 YouTube</h2>
+        <div class="section-desc">영상 구조, 후킹, 스토리텔링 레퍼런스</div>
+      </div>
 
-    <h2>🎬 YouTube</h2>
+      <div class="card-grid">
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=1200&q=80"
+            alt="YouTube reference thumbnail"
+            class="thumb"
+          />
+          <div class="card-body">
+            <div class="label">YouTube</div>
+            <a
+              href="https://youtu.be/mSoNhty4xEg?si=0D1FQ4LZ1zStqi54"
+              target="_blank"
+              class="card-title"
+            >
+              내가 쓰는 AI들이 멍청한 이유
+            </a>
+            <p>한 줄 설명: 초반 3초에서 강하게 후킹하는 구조</p>
+            <p class="reason">왜 저장했는지: 첫 장면에서 시선을 잡는 방식이 인상적</p>
+          </div>
+        </article>
 
-    <div class="card">
-      <a href="https://youtube.com" target="_blank">제목:내가 쓰는 AI들이 멍청한 이유</a>
-      <p>링크 : https://youtu.be/mSoNhty4xEg?si=0D1FQ4LZ1zStqi54</p>
-      <p>한 줄 설명: 초반 3초에서 강하게 후킹하는 구조</p>
-      <p class="reason">왜 저장했는지: 첫 장면에서 시선을 잡는 방식이 인상적</p>
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+            alt="YouTube reference thumbnail"
+            class="thumb"
+          />
+          <div class="card-body">
+            <div class="label">YouTube</div>
+            <a
+              href="https://www.youtube.com/watch?v=8TBvwEODZgU"
+              target="_blank"
+              class="card-title"
+            >
+              ※저예산 독립영화의 비밀※ 장항준 "내가 두 사람은 2,500으로 묶어놨어"
+            </a>
+            <p>한 줄 설명: 스토리가 재미있음</p>
+            <p class="reason">왜 저장했는지: 장항준 감독의 출연과 이야기의 흡입력이 좋아서 저장</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>📸 Instagram</h2>
+        <div class="section-desc">썸네일, 카피, 저장 유도 구조 레퍼런스</div>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80"
+            alt="Instagram reference thumbnail"
+            class="thumb"
+          />
+          <div class="card-body">
+            <div class="label">Instagram</div>
+            <a
+              href="https://www.instagram.com/p/DV8PMTWoCJM/?hl=ko&img_index=1"
+              target="_blank"
+              class="card-title"
+            >
+              인스타 콘텐츠
+            </a>
+            <p>한 줄 설명: 저장을 유도하는 구조</p>
+            <p class="reason">왜 저장했는지: 썸네일 제목이 이목을 집중시켜 CTA 없이 저장 행동을 유도</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>🚀 Brand Campaign</h2>
+        <div class="section-desc">브랜드 메시지와 감정 전달 방식 레퍼런스</div>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=80"
+            alt="Brand campaign thumbnail"
+            class="thumb"
+          />
+          <div class="card-body">
+            <div class="label">Brand Campaign</div>
+            <a
+              href="https://www.instagram.com/nike/?hl=ko"
+              target="_blank"
+              class="card-title"
+            >
+              Nike
+            </a>
+            <p>한 줄 설명: 제품보다 메시지를 먼저 전달</p>
+            <p class="reason">왜 저장했는지: Just Do It이라는 브랜드 철학을 감정적으로 전달</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      © Reference Library by Jimin Song
     </div>
-
-    <div class="card">
-      <a href="https://youtube.com" target="_blank">제목:※저예산 독립영화의 비밀※ 장항준 "내가 두 사람은 2,500으로 묶어놨어"</a>
-      <p>링크 : https://www.youtube.com/watch?v=8TBvwEODZgU</p>
-      <p>한 줄 설명: 스토리가 재미있음</p>
-      <p class="reason">왜 저장했는지: 요새 가장 핫한 장한준 감독의 출연, 그냥 재미있음</p>
-    </div>
-
-    <h2>📸 Instagram</h2>
-
-    <div class="card">
-      <a href="https://instagram.com" target="_blank">인스타 콘텐츠</a>
-      <p>링크 : https://www.instagram.com/p/DV8PMTWoCJM/?hl=ko&img_index=1</p>
-      <p>한 줄 설명: 저장을 유도하는 구조</p>
-      <p class="reason">왜 저장했는지: 썸네일 제목이 이목을 집중시켜 CTA 없이 저장 행동을 유도</p>
-    </div>
-
-    <h2>🚀 Brand Campaign</h2>
-
-    <div class="card">
-      <a href="https://www.instagram.com/nike/?hl=ko" target="_blank">브랜드 캠페인</a>
-      <p>한 줄 설명: 제품보다 메시지를 먼저 전달</p>
-      <p class="reason">왜 저장했는지: Just Do It! 브랜드 철학을 감정적으로 전달</p>
-    </div>
-
   </main>
-
 </body>
 </html>
