@@ -10,11 +10,23 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --bg: #f5f5f3;
+      --card: #ffffff;
+      --text: #1f1f1f;
+      --muted: #777;
+      --line: #e8e8e8;
+      --soft: #f3f3f3;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 14px 34px rgba(0, 0, 0, 0.08);
+      --radius: 20px;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f5f5f3;
-      color: #1f1f1f;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
 
@@ -26,7 +38,7 @@
     header {
       background: #ffffff;
       padding: 72px 20px 56px;
-      border-bottom: 1px solid #e8e8e8;
+      border-bottom: 1px solid var(--line);
     }
 
     .header-inner {
@@ -45,6 +57,7 @@
       object-fit: cover;
       flex-shrink: 0;
       border: 4px solid #f2f2f2;
+      background: #ddd;
     }
 
     .header-text {
@@ -56,7 +69,7 @@
       display: inline-block;
       font-size: 13px;
       color: #666;
-      background: #f3f3f3;
+      background: var(--soft);
       padding: 6px 12px;
       border-radius: 999px;
       margin-bottom: 14px;
@@ -78,20 +91,97 @@
     .sub {
       margin-top: 14px;
       font-size: 14px;
-      color: #777;
+      color: var(--muted);
     }
 
     main {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 40px 20px 80px;
+      padding: 32px 20px 80px;
+    }
+
+    .controls {
+      background: #fff;
+      border: 1px solid #ececec;
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+      position: sticky;
+      top: 12px;
+      z-index: 10;
+    }
+
+    .controls-top {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .search-wrap {
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #ddd;
+      border-radius: 999px;
+      font-size: 14px;
+      background: #fafafa;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: #bbb;
+      background: #fff;
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      border: 1px solid #ddd;
+      background: #fff;
+      color: #333;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      background: #f5f5f5;
+    }
+
+    .filter-btn.active {
+      background: #1f1f1f;
+      color: #fff;
+      border-color: #1f1f1f;
+    }
+
+    .result-meta {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--muted);
     }
 
     .section {
       margin-top: 56px;
     }
 
-    .section:first-child {
+    .section.hidden {
+      display: none;
+    }
+
+    .section:first-of-type {
       margin-top: 0;
     }
 
@@ -112,7 +202,7 @@
 
     .section-desc {
       font-size: 14px;
-      color: #777;
+      color: var(--muted);
     }
 
     .card-grid {
@@ -122,17 +212,21 @@
     }
 
     .card {
-      background: #ffffff;
-      border-radius: 20px;
+      background: var(--card);
+      border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      box-shadow: var(--shadow);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       border: 1px solid #ececec;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card.hidden {
+      display: none;
     }
 
     .thumb {
@@ -152,7 +246,7 @@
       font-size: 12px;
       font-weight: bold;
       color: #666;
-      background: #f3f3f3;
+      background: var(--soft);
       border-radius: 999px;
       padding: 6px 10px;
       margin-bottom: 12px;
@@ -166,8 +260,8 @@
       margin-bottom: 10px;
     }
 
-    .card-title:hover {
-      opacity: 0.7;
+    .card:hover .card-title {
+      text-decoration: underline;
     }
 
     .card p {
@@ -180,6 +274,18 @@
       color: #7a7a7a;
     }
 
+    .empty-state {
+      display: none;
+      background: #fff;
+      border: 1px solid #ececec;
+      border-radius: 20px;
+      padding: 36px 20px;
+      text-align: center;
+      color: #666;
+      box-shadow: var(--shadow);
+      margin-top: 24px;
+    }
+
     .footer-note {
       margin-top: 70px;
       padding-top: 24px;
@@ -189,6 +295,12 @@
       text-align: center;
     }
 
+    mark {
+      background: #fff2b3;
+      padding: 0 2px;
+      border-radius: 3px;
+    }
+
     @media (max-width: 768px) {
       header {
         padding: 56px 20px 44px;
@@ -196,6 +308,10 @@
 
       header h1 {
         font-size: 34px;
+      }
+
+      .controls {
+        position: static;
       }
 
       .card-grid {
@@ -232,14 +348,44 @@
   </header>
 
   <main>
-    <section class="section">
+    <section class="controls">
+      <div class="controls-top">
+        <div class="search-wrap">
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="제목, 한 줄 설명, 저장 이유를 검색해보세요"
+          />
+        </div>
+
+        <div class="filter-group">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="youtube">YouTube</button>
+          <button class="filter-btn" data-filter="instagram">Instagram</button>
+          <button class="filter-btn" data-filter="brand">Brand Campaign</button>
+        </div>
+      </div>
+
+      <div class="result-meta" id="resultMeta">
+        전체 4개의 레퍼런스를 보고 있습니다.
+      </div>
+    </section>
+
+    <section class="section" data-section="youtube">
       <div class="section-header">
         <h2>🎬 YouTube</h2>
         <div class="section-desc">영상 구조, 후킹, 스토리텔링 레퍼런스</div>
       </div>
 
       <div class="card-grid">
-        <article class="card">
+        <article
+          class="card"
+          data-category="youtube"
+          data-title="내가 쓰는 AI들이 멍청한 이유"
+          data-description="초반 3초에서 강하게 후킹하는 구조"
+          data-reason="썸네일이 너무 재밌다. 내가 쓰는 AI들이 멍청하다니. 침착맨은 이런 과감한 워딩을 쓸 수 있어서 좋겠다. 이렇게 써도 리스크가 없다니."
+        >
           <img
             src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=1200&q=80"
             alt="YouTube reference thumbnail"
@@ -254,12 +400,21 @@
             >
               내가 쓰는 AI들이 멍청한 이유
             </a>
-            <p>한 줄 설명: 초반 3초에서 강하게 후킹하는 구조</p>
-            <p class="reason">왜 저장했는지: 첫 장면에서 시선을 잡는 방식이 인상적</p>
+            <p class="desc">한 줄 설명: 초반 3초에서 강하게 후킹하는 구조</p>
+            <p class="reason">
+              왜 저장했는지: 썸네일이 너무 재밌다. 내가 쓰는 AI들이 멍청하다니...ㅎㅎㅎ
+              침착맨은 이런 과감한 워딩을 쓸 수 있어서 좋겠다. 이렇게 써도 리스크가 없다니.
+            </p>
           </div>
         </article>
 
-        <article class="card">
+        <article
+          class="card"
+          data-category="youtube"
+          data-title="저예산 독립영화의 비밀 장항준"
+          data-description="인물 중심 스토리텔링으로 끝까지 시청을 유도하는 구조"
+          data-reason="요즘 가장 핫한 장항준 감독의 출연. 이야기의 흡입력이 좋아서 저장. 콘텐츠에는 역시 인물이 중요하다. 사람들이 보고 싶게 만들고 끝까지 보게 만드는 인물의 힘. 나도 이런 인물들과 작업하고 싶고 내가 이런 인물이 되고 싶다."
+        >
           <img
             src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
             alt="YouTube reference thumbnail"
@@ -274,21 +429,31 @@
             >
               ※저예산 독립영화의 비밀※ 장항준 "내가 두 사람은 2,500으로 묶어놨어"
             </a>
-            <p>한 줄 설명: 스토리가 재미있음</p>
-            <p class="reason">왜 저장했는지: 장항준 감독의 출연과 이야기의 흡입력이 좋아서 저장</p>
+            <p class="desc">한 줄 설명: 인물 중심 스토리텔링으로 끝까지 시청을 유도하는 구조</p>
+            <p class="reason">
+              왜 저장했는지: 요즘 가장 핫한 장항준 감독의 출연. 이야기의 흡입력이 좋아서 저장.
+              콘텐츠에는 역시 인물이 중요하다. 사람들이 보고 싶게 만들고, 끝까지 보게 만드는 인물의 힘.
+              나도 이런 인물들과 작업하고 싶고, 내가 이런 인물이 되고 싶다.
+            </p>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" data-section="instagram">
       <div class="section-header">
         <h2>📸 Instagram</h2>
         <div class="section-desc">썸네일, 카피, 저장 유도 구조 레퍼런스</div>
       </div>
 
       <div class="card-grid">
-        <article class="card">
+        <article
+          class="card"
+          data-category="instagram"
+          data-title="인스타 콘텐츠 고양 백반 맛집 완벽 총 정리"
+          data-description="저장을 유도하는 구조"
+          data-reason="완벽 총 정리라는 썸네일 제목이 이목을 집중시켜 CTA 없이 저장 행동을 유도"
+        >
           <img
             src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80"
             alt="Instagram reference thumbnail"
@@ -301,23 +466,32 @@
               target="_blank"
               class="card-title"
             >
-              인스타 콘텐츠
+              인스타 콘텐츠: 고양 백반 맛집, '완벽 총 정리'
             </a>
-            <p>한 줄 설명: 저장을 유도하는 구조</p>
-            <p class="reason">왜 저장했는지: 썸네일 제목이 이목을 집중시켜 CTA 없이 저장 행동을 유도</p>
+            <p class="desc">한 줄 설명: 저장을 유도하는 구조</p>
+            <p class="reason">
+              왜 저장했는지: '완벽 총 정리'라는 썸네일 제목이 이목을 집중시켜
+              CTA 없이 저장 행동을 유도한다.
+            </p>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" data-section="brand">
       <div class="section-header">
         <h2>🚀 Brand Campaign</h2>
         <div class="section-desc">브랜드 메시지와 감정 전달 방식 레퍼런스</div>
       </div>
 
       <div class="card-grid">
-        <article class="card">
+        <article
+          class="card"
+          data-category="brand"
+          data-title="Nike"
+          data-description="명불허전 나이키 제품보다 메시지를 먼저 전달"
+          data-reason="Just Do It이라는 브랜드 철학을 감정적으로 전달"
+        >
           <img
             src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=80"
             alt="Brand campaign thumbnail"
@@ -332,16 +506,131 @@
             >
               Nike
             </a>
-            <p>한 줄 설명: 제품보다 메시지를 먼저 전달</p>
-            <p class="reason">왜 저장했는지: Just Do It이라는 브랜드 철학을 감정적으로 전달</p>
+            <p class="desc">한 줄 설명: 명불허전, 나이키! 제품보다 메시지를 먼저 전달</p>
+            <p class="reason">
+              왜 저장했는지: Just Do It이라는 브랜드 철학을 감정적으로 전달
+            </p>
           </div>
         </article>
       </div>
     </section>
 
+    <div class="empty-state" id="emptyState">
+      검색 결과가 없습니다.<br />
+      다른 키워드로 검색하거나 필터를 바꿔보세요.
+    </div>
+
     <div class="footer-note">
       © Reference Library by Jimin Song
     </div>
   </main>
+
+  <script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+    const sections = document.querySelectorAll('.section[data-section]');
+    const searchInput = document.getElementById('searchInput');
+    const emptyState = document.getElementById('emptyState');
+    const resultMeta = document.getElementById('resultMeta');
+
+    let currentFilter = 'all';
+
+    function escapeHtml(text) {
+      return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function highlightText(element, keyword) {
+      const original = element.getAttribute('data-original');
+      if (!original) return;
+
+      if (!keyword) {
+        element.innerHTML = original;
+        return;
+      }
+
+      const safeKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp('(' + safeKeyword + ')', 'gi');
+      element.innerHTML = original.replace(regex, '<mark>$1</mark>');
+    }
+
+    function prepareHighlightTargets() {
+      document.querySelectorAll('.card-title, .desc, .reason').forEach((el) => {
+        el.setAttribute('data-original', el.innerHTML);
+      });
+    }
+
+    function updateResults() {
+      const query = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const category = card.dataset.category;
+        const title = card.dataset.title.toLowerCase();
+        const description = card.dataset.description.toLowerCase();
+        const reason = card.dataset.reason.toLowerCase();
+
+        const matchesFilter = currentFilter === 'all' || category === currentFilter;
+        const matchesSearch =
+          !query ||
+          title.includes(query) ||
+          description.includes(query) ||
+          reason.includes(query);
+
+        if (matchesFilter && matchesSearch) {
+          card.classList.remove('hidden');
+          visibleCount += 1;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      sections.forEach((section) => {
+        const visibleCards = section.querySelectorAll('.card:not(.hidden)');
+        if (visibleCards.length === 0) {
+          section.classList.add('hidden');
+        } else {
+          section.classList.remove('hidden');
+        }
+      });
+
+      if (visibleCount === 0) {
+        emptyState.style.display = 'block';
+      } else {
+        emptyState.style.display = 'none';
+      }
+
+      const filterLabelMap = {
+        all: '전체',
+        youtube: 'YouTube',
+        instagram: 'Instagram',
+        brand: 'Brand Campaign'
+      };
+
+      const currentLabel = filterLabelMap[currentFilter];
+      const searchLabel = query ? ` · 검색어: "${searchInput.value.trim()}"` : '';
+      resultMeta.textContent = `${currentLabel} 기준 ${visibleCount}개의 레퍼런스를 보고 있습니다${searchLabel}.`;
+
+      document.querySelectorAll('.card-title, .desc, .reason').forEach((el) => {
+        highlightText(el, query);
+      });
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach((btn) => btn.classList.remove('active'));
+        button.classList.add('active');
+        currentFilter = button.dataset.filter;
+        updateResults();
+      });
+    });
+
+    searchInput.addEventListener('input', updateResults);
+
+    prepareHighlightTargets();
+    updateResults();
+  </script>
 </body>
 </html>
